@@ -1,4 +1,4 @@
-import java.util.*;
+import javax.swing.JOptionPane;
 public class Person {
 	private String name;
 
@@ -31,11 +31,11 @@ public class Person {
 	public static Person makePerson(){
 		Person result;
 		String tempName;
-		Scanner input = new Scanner(System.in);
-		System.out.print("Enter a person's name: ");
-		tempName = input.nextLine();
+		
+		tempName = JOptionPane.showInputDialog(null, "Enter a person's name: ");
 		result = new Person(tempName);
 		return result;
+		
 	} // end of makePerson
 
 

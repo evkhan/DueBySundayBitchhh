@@ -1,5 +1,4 @@
 import javax.swing.JOptionPane;
-
 public class Farmer extends Politician
 {
 	private String farmType;
@@ -23,7 +22,6 @@ public class Farmer extends Politician
 
 	public void setFarmType(String farmType) 
 	{
-		farmType = JOptionPane.showInputDialog("Enter type of farm:");
 		this.farmType = farmType;
 	}
 
@@ -34,7 +32,6 @@ public class Farmer extends Politician
 
 	public void setNoAcres(double noAcres) 
 	{
-		noAcres = Double.parseDouble(JOptionPane.showInputDialog("Enter amount of Acres:"));
 		if(noAcres <= 0 || noAcres >= 500000)
 		{
 			JOptionPane.showMessageDialog(null, "Invalid input. Number must be between 0 and 500,000");
@@ -47,19 +44,27 @@ public class Farmer extends Politician
 	public String toString()
 	{
 		String result = null;
-		
+		result = super.toString();
+		result += "I own a " + farmType + " farm.\n" + "My farm has " + noAcres + " acres.\n";
 		return result;
 	}
+
+// makeFarmer Method =============================================
 	
 	public static Farmer makeFarmer()
 	{
+		Farmer result;
+		String farmType;
+		double noAcres;
+		Politician tempPolitician = Politician.makePolitician();
 		
-		return null;
+		farmType = JOptionPane.showInputDialog("Enter type of farm:");
+		noAcres = Double.parseDouble(JOptionPane.showInputDialog("Enter amount of Acres:"));
+		
+		result = new Farmer( tempPolitician.getName(), tempPolitician.isHonest(), tempPolitician.getParty(), farmType, noAcres);
+
+		return result;
 	}
 
 
-	
-
-	
-	
 }

@@ -1,29 +1,35 @@
-import java.util.*;
-public class Politician extends Person {
+import javax.swing.JOptionPane;
+public class Politician extends Person 
+{
 	private boolean honest = false;
 	private char party = ' ';
-	
-	public Politician(String name, boolean honest, char party) {
+
+	public Politician(String name, boolean honest, char party) 
+	{
 		super(name);
-		setHonest(honest);
-		setParty(party);
-	} // end of Constructor
+		setHonest(honest);	// passing honest variable through setter so that it is validated
+		setParty(party);    // passing party variable through setter so that it is validated
+	} 
 	
-	// Setters and Getters ==========================
-	public boolean isHonest() {
+// Setters and Getters =========================================================
+	
+	public boolean isHonest() 
+	{
 		return honest;
 	}
 
-	public void setHonest(boolean honest) {
+	public void setHonest(boolean honest) 
+	{
 		this.honest = honest;
 	}
 
-	public char getParty() {
+	public char getParty() 
+	{
 		return party;
 	}
 	
-	public void setParty(char party) {
-		Scanner input = new Scanner(System.in);
+	public void setParty(char party) 
+	{
 		boolean badParty = false;
 		do{
 			party = Character.toUpperCase(party);
@@ -33,23 +39,17 @@ public class Politician extends Person {
 			case 'I':
 				break;
 			default:
-				System.out.print("Invalid Party\n "
-						+ "Enter only a D, R, or I: ");
-				party = input.nextLine().charAt(0);
+				party = JOptionPane.showInputDialog(null, "Invalid Party\n " + "Enter only a D, R, or I: ").charAt(0);
 				badParty = true;
 				break;
-			} // end switch
+			} 
 		}while(badParty);
-		
-		
-		
-		
-		
+		//  I believe after this the user SHOULD be returned to main menu but isn't being returned 
 		this.party = party;
 	}
-	// ================================================
 	
-	@Override
+// toString Method ========================================================================================
+	
 	public String toString() {
 		String result;
 		result = super.toString();
@@ -65,23 +65,23 @@ public class Politician extends Person {
 		} else
 			result += "I am not honest.\n";
 		return result;
-	} // end toString
+	} 
 	
-	public static Politician makePolitician(){
-		Politician result;
+// makePolitician Method =====================================================================================	
+	
+	public static Politician makePolitician()
+	{
+		Politician result; 
 		boolean honest;
 		char party = ' ';
 		Person tempPerson = Person.makePerson();
-		Scanner input = new Scanner(System.in);
-		System.out.print("Enter a politician's party: ");
-		party = input.nextLine().charAt(0);
-		System.out.print("Honest? True or False: ");
-		honest = input.nextBoolean();
-		result = new Politician(tempPerson.getName(), 
-				honest, party);
+		
+		party = JOptionPane.showInputDialog(null, "Enter a Politician's party: ").charAt(0);
+		honest = Boolean.parseBoolean(JOptionPane.showInputDialog(null, "Honest? True or False: "));
+		
+		result = new Politician(tempPerson.getName(), honest, party);
 		return result;
-	} // end of makePerson
-	
+	} 
 	
 	
 } // end of Class
