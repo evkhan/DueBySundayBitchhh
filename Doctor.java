@@ -51,7 +51,7 @@ public class Doctor extends Politician
 	public static Doctor makeDoctor()
 	{
 		Doctor result;
-		boolean surgeon = false; // don't know if setting this to false is correct
+		boolean surgeon = false; // don't know if setting this to false is correct (It is)
 		double studentLoanDebt = 0;
 		Politician tempPolitician = Politician.makePolitician();
 		surgeon = Boolean.parseBoolean(JOptionPane.showInputDialog("Are you a surgeon? (true or false)"));

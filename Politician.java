@@ -30,21 +30,7 @@ public class Politician extends Person
 	
 	public void setParty(char party) 
 	{
-		boolean badParty = false;
-		do{
-			party = Character.toUpperCase(party);
-			switch(party){
-			case 'D':
-			case 'R':
-			case 'I':
-				break;
-			default:
-				party = JOptionPane.showInputDialog(null, "Invalid Party\n " + "Enter only a D, R, or I: ").charAt(0);
-				badParty = true;
-				break;
-			} 
-		}while(badParty);
-		//  I believe after this the user SHOULD be returned to main menu but isn't being returned 
+//		
 		this.party = party;
 	}
 	
@@ -76,7 +62,27 @@ public class Politician extends Person
 		char party = ' ';
 		Person tempPerson = Person.makePerson();
 		
-		party = JOptionPane.showInputDialog(null, "Enter a Politician's party: ").charAt(0);
+		party = JOptionPane.showInputDialog(null, "Enter a Politician's party (Enter D, R, or I: ").charAt(0);
+		boolean badParty = true;// Set to true then is set to false upon valid input.
+		do{
+			party = Character.toUpperCase(party);
+			switch(party){
+			case 'D':
+				
+			case 'R':
+				
+			case 'I':
+				badParty = false;// since there are no breaks this only needed once
+				break;
+			default:
+				party = JOptionPane.showInputDialog(null, "Invalid Party\n " + "Enter only a D, R, or I: ").charAt(0);
+				
+				break;
+			} 
+		}while(badParty);
+		//party = Character.toUpperCase(party);
+		
+		
 		honest = Boolean.parseBoolean(JOptionPane.showInputDialog(null, "Honest? True or False: "));
 		
 		result = new Politician(tempPerson.getName(), honest, party);

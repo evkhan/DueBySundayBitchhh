@@ -32,10 +32,12 @@ public class Farmer extends Politician
 
 	public void setNoAcres(double noAcres) 
 	{
+		do {
 		if(noAcres <= 0 || noAcres >= 500000)
-		{
-			JOptionPane.showMessageDialog(null, "Invalid input. Number must be between 0 and 500,000");
-		} // incomplete -- this must return user to menu after message is displayed
+		{ // why do you curly brace like this, this is wrong
+			noAcres = Double.parseDouble(JOptionPane.showInputDialog(null, "Invalid input. please enter a number between 0 and 500,000"));
+		} 
+		} while(noAcres <= 0 || noAcres >= 500000);//forces user to enter valid input
 		this.noAcres = noAcres;
 	}
 	
